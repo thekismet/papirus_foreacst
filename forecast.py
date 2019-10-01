@@ -6,7 +6,6 @@
 # MIT license.
 # 
 
-
 from __future__ import print_function
 from datetime import date
 from datetime import datetime
@@ -15,14 +14,14 @@ import calendar
 import urllib, json
 
 text = PapirusTextPos(False)
-fontsize = 15
+fontsize = 10
 
 #Dark Sky API Key goes here
-API_KEY = ""
+API_KEY = "XXX"
 
 #Put your location here
-LAT = "45.4324893"
-LONG = "-122.3778252"
+LAT = "37.5396"
+LONG = "127.0097"
 
 def forecast(idx):
 
@@ -31,7 +30,7 @@ def forecast(idx):
     day     = calendar.day_name[date.weekday()]
     lo      = data['daily']['data'][idx]['temperatureMin']
     hi      = data['daily']['data'][idx]['temperatureMax']
-    cond    = data['daily']['data'][idx]['summary']
+    cond    = data['currently']['summary']
     nowtemp = data['currently']['temperature'] 
 
     #if there is a weather alert for the area get the title to print later.
@@ -54,24 +53,24 @@ def forecast(idx):
 
     #The follow preapres the data to send to Papirus hat
     #Show Day 
-    text.AddText((day),0,0,20,Id="Line1")
+    text.AddText((day), 0, 0, 18, Id="Line1", fontPath='/home/pi/PaPiRusWeather/fonts/Roboto-Bold.ttf')
     #Low temp and high temps for the day
-    text.AddText(('low:' + str (lo) + ' high:' + str (hi)), 0, 20, fontsize, Id="Line2" ) 
+    text.AddText(('low:' + str (lo) + ' high:' + str (hi)), 0, 30, fontsize, Id="Line2", fontPath='/home/pi/PaPiRusWeather/fonts/ElecSign.ttf') 
     #Show current temp
-    text.AddText(('Currently:' + str (nowtemp)),0,40,fontsize, Id="line3")
+    text.AddText(('Currently:' + str (nowtemp)), 0, 40, fontsize, Id="line3",fontPath='/home/pi/PaPiRusWeather/fonts/ElecSign.ttf')
     #if there is an alert print it rather than the summary
     #if there is not an alert print the summary
     if warn is not None:
-       text.AddText(('' + str (warn)), 0, 60, fontsize, Id="Line4")
+       text.AddText(('' + str (warn)), 0, 50, fontsize, Id="Line4", fontPath='/home/pi/PaPiRusWeather/fonts/ElecSign.ttf')
     else:
-       text.AddText(('' + cond.replace(u'\u2013', '-').encode('utf-8')), 0, 60, fontsize, Id="Line4") 
+       text.AddText(('' + cond.replace(u'\u2013', '-').encode('utf-8')), 0, 50, fontsize, Id="Line4", fontPath='/home/pi/PaPiRusWeather/fonts/ElecSign.ttf') 
     
     #write it all out to the dispay
     text.WriteAll()
 
 
 #get the weather data
-url = "https://api.darksky.net/forecast/"+API_KEY+"/"+LAT+","+LONG+"?exclude=[minutely,hourly,flags]&units=us"
+url = "https://api.darksky.net/forecast/"+API_KEY+"/"+LAT+","+LONG+"?exclude=[minutely,hourly,flags]&units=auto"
 response = urllib.urlopen(url)
 data = json.loads(response.read())
 
