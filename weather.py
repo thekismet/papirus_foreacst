@@ -24,7 +24,7 @@ LOCATION = 37.5396,127.0097 #put your longitude and latittude here in decimal de
 UNITS = 'auto' #specify the units you want your results in here, see the Dark Sky API docs page for details
 
 # set Darksky API Key
-APIKEY= '8aee1d750d1d9085dd42452f730bd6c6' # put your Dark Sky API key here. Get one at https://darksky.net/dev
+APIKEY= 'XXXXXXXXXXXXXXXXX' # put your Dark Sky API key here. Get one at https://darksky.net/dev
 
 # For PaPiRus
 screen = Papirus()
