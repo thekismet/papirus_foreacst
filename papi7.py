@@ -1,34 +1,3 @@
-login as: pi
-     ┌────────────────────────────────────────────────────────────────────┐
-     │                        • MobaXterm 12.1 •                          │
-     │            (SSH client, X-server and networking tools)             │
-     │                                                                    │
-     │ ➤ SSH session to pi@192.168.10.4                                   │
-     │   • SSH compression : ✔                                            │
-     │   • SSH-browser     : ✔                                            │
-     │   • X11-forwarding  : ✔  (remote display is forwarded through SSH) │
-     │   • DISPLAY         : ✔  (automatically set on remote server)      │
-     │                                                                    │
-     │ ➤ For more info, ctrl+click on help or visit our website           │
-     └────────────────────────────────────────────────────────────────────┘
-
-Linux papirus 4.19.66+ #1253 Thu Aug 15 11:37:30 BST 2019 armv6l
-
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-Last login: Tue Apr 14 12:30:55 2020 from 192.168.10.14
-pi@papirus:~ $ ls
-clock  darkskylib  papi  papirus  PaPiRus  papirus-clock.py  papirus_display  PaPiRusWeather  pihat_weather  Pi-Weather  projects  weatherPapirus  weather-pi-data
-pi@papirus:~ $ cd weather-pi-data
-pi@papirus:~/weather-pi-data $ ls
-blinkt-rain.py  blinkt-uvindex.py  clock2.py  clock.py  config  darksky-dot3k.py  darksky-papirus.py  fonts  papi2.py  papi3.py  papi4.py  papi5.py  papi6.py  papi7.py  papi.py  papirus-clock.py
-pi@papirus:~/weather-pi-data $ nano papi6.py
-  GNU nano 2.7.4                                                                                   File: papi6.py
-
 from __future__ import print_function
 
 import os
@@ -53,7 +22,7 @@ LOCATION = 37.5396,127.0097 #put your longitude and latittude here in decimal de
 UNITS = 'auto' #specify the units you want your results in here, see the Dark Sky API docs page for details
 
 # set Darksky API Key
-APIKEY= '8aee1d750d1d9085dd42452f730bd6c6' # put your Dark Sky API key here. Get one at https://darksky.net/dev
+APIKEY= '##########################' # put your Dark Sky API key here. Get one at https://darksky.net/dev
 
 # For PaPiRus
 screen = Papirus()
